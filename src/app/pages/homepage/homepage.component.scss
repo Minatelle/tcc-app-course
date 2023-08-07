@@ -1,0 +1,45 @@
+section {
+  margin: 32px;
+}
+
+.profile-icon {
+  font-size: 96px;
+  width: 96px;
+  height: 96px;
+
+  color: #33277e;
+}
+
+.profile-message {
+  font-size: 24px;
+}
+
+.search {
+  margin-top: 128px;
+  border-radius: 28px !important;
+}
+
+.search-bar {
+  width: -webkit-fill-available;
+}
+
+.search-input {
+  border: solid;
+  border-color: #262626;
+  border-width: 2px;
+  font-size: 20px !important;
+  border-radius: 20px;
+}
+
+.search-icon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+  color: #33277e;
+}
+
+// input:focus {
+//   border-color: #33277e;
+// }
+
+
