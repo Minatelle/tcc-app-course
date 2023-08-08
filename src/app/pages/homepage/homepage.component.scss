@@ -38,8 +38,33 @@ section {
   color: #33277e;
 }
 
-// input:focus {
-//   border-color: #33277e;
-// }
+.row {
+  display: flex;
+}
 
+.button {
+  flex: 50%;
+  font-size: 20px;
+  height: 48px !important;
+  border-radius: 28px;
+  border: solid;
+  border-color: #262626;
+  border-width: 1px;
+  background-color: #33277e !important;
+}
 
+.button:first-child {
+  margin-right: 16px;
+}
+
+.button:last-child {
+  margin-left: 16px;
+  display: flex;
+}
+
+.voice-icon {
+  font-size: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  color: #fdfdfd;
+}

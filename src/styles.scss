@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use "@angular/material" as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,15 @@ $tcc-app-course-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$tcc-app-course-theme: mat.define-light-theme((
-  color: (
-    primary: $tcc-app-course-primary,
-    accent: $tcc-app-course-accent,
-    warn: $tcc-app-course-warn,
+$tcc-app-course-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $tcc-app-course-primary,
+      accent: $tcc-app-course-accent,
+      warn: $tcc-app-course-warn,
+    ),
   )
-));
+);
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -35,8 +36,14 @@ $tcc-app-course-theme: mat.define-light-theme((
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%; }
-body { margin: 0; font-family: "Noto Sans", Roboto, "Helvetica Neue", sans-serif; }
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Noto Sans", Roboto, "Helvetica Neue", sans-serif;
+}
 p {
   margin-top: 8px !important;
   margin-bottom: 8px !important;
@@ -45,4 +52,8 @@ p {
   font-style: normal;
   font-weight: 700;
   line-height: normal;
+}
+
+.white-text {
+  color: #fdfdfd;
 }
