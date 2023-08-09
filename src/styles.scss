@@ -1,1 +1,21 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~material-icons/iconfont/material-icons.css";
+@import "primeng/resources/themes/lara-light-blue/theme.css";
+@import "primeng/resources/primeng.css";
+
+body {
+  font-family: "Noto Sans", Roboto, "Helvetica Neue", sans-serif;
+}
+
+p {
+  margin-top: 8px !important;
+  margin-bottom: 8px !important;
+  color: #262626;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.white-text {
+  color: #fdfdfd;
+}
