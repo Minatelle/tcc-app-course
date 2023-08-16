@@ -1,4 +1,4 @@
-<section class="m-5">
+<section class="m-5 h-full">
   <header class="flex align-items-center p-1">
     <button
       class="w-3rem h-3rem bg-primary-reverse"
@@ -17,7 +17,7 @@
     </span>
 
     <p-fileUpload
-      class=" text-center"
+      class="text-center"
       mode="basic"
       name="demo[]"
       url="https://www.primefaces.org/cdn/api/upload.php"
@@ -29,7 +29,9 @@
 
     <form class="mt-6" [formGroup]="formGroup">
       <div class="flex flex-column">
-        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="name">Nome:</label>
+        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="name"
+          >Nome:</label
+        >
         <input
           class="border-2 border-black"
           placeholder="Digite o seu nome aqui"
@@ -39,23 +41,30 @@
         />
       </div>
       <div class="mt-4 flex flex-column w-full">
-        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="birthDate">Data de Nascimento:</label>
+        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="birthDate"
+          >Data de Nascimento:</label
+        >
         <p-calendar
           class="border-black"
           formControlName="birthDate"
           dateFormat="dd/mm/yy"
-          placeholder="{{dateToday}}"
+          placeholder="{{ dateToday }}"
           [inputStyleClass]="'border-black'"
           [showIcon]="true"
           [touchUI]="true"
           [readonlyInput]="true"
         ></p-calendar>
       </div>
-      <div class="flex justify-content-center align-content-end">
-      <button class="mt-8 mx-5 p-0 w-10rem h-3rem" type="submit" pButton pRipple>
-        <p class="w-full font-bold text-center">Salvar</p>
-      </button>
-    </div>
+      <div 
+      class="bottom-button flex justify-content-center align-items-end">
+          <button
+          class="p-0 w-10rem h-3rem"
+          label="Salvar"
+          type="submit"
+          pButton
+          pRipple
+          ></button>
+      </div>
     </form>
   </main>
 </section>
