@@ -1,0 +1,69 @@
+<section class="m-5">
+  <header class="flex align-items-center p-1">
+    <button
+      class="w-3rem h-3rem bg-primary-reverse"
+      text-secondary
+      pButton
+      pRipple
+    >
+      <i class="flex-1 -ml-2 material-icons">arrow_back</i>
+    </button>
+
+    <h1 class="mr-6 w-full text-center">Perfil</h1>
+  </header>
+  <main>
+    <span class="mb-3 w-full text-center text-primary text-9xl material-icons">
+      account_circle
+    </span>
+
+    <p-fileUpload
+      class="text-center"
+      mode="basic"
+      name="demo[]"
+      url="https://www.primefaces.org/cdn/api/upload.php"
+      accept="image/*"
+      (onUpload)="onBasicUploadAuto($event)"
+      [auto]="true"
+      chooseLabel="Mudar foto"
+    ></p-fileUpload>
+
+    <form class="mt-6" [formGroup]="formGroup">
+      <div class="flex flex-column">
+        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="name"
+          >Nome:</label
+        >
+        <input
+          class="border-2 border-black"
+          placeholder="Digite o seu nome aqui"
+          type="text"
+          formControlName="name"
+          pInputText
+        />
+      </div>
+      <div class="mt-4 flex flex-column w-full">
+        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="birthDate"
+          >Data de Nascimento:</label
+        >
+        <p-calendar
+          class="border-black"
+          formControlName="birthDate"
+          dateFormat="dd/mm/yy"
+          placeholder="{{ dateToday }}"
+          [inputStyleClass]="'border-black'"
+          [showIcon]="true"
+          [touchUI]="true"
+          [readonlyInput]="true"
+        ></p-calendar>
+      </div>
+      <div class="bottom-button flex justify-content-center align-items-end">
+        <button
+          class="p-0 w-10rem h-3rem"
+          label="Salvar"
+          type="submit"
+          pButton
+          pRipple
+        ></button>
+      </div>
+    </form>
+  </main>
+</section>
