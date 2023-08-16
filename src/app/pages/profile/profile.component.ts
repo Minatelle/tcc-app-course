@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UploadEvent } from 'primeng/fileupload/fileupload.interface';
 
@@ -15,7 +16,13 @@ export class ProfileComponent {
     birthDate: new FormControl(''),
   });
 
-  onBasicUploadAuto(event: UploadEvent) {
+  constructor(private router: Router) {}
+
+  public navigateToHome() {
+    this.router.navigate(['/']);
+  }
+
+  public onBasicUploadAuto(event: UploadEvent) {
     console.log('Send!');
   }
 }

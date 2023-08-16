@@ -7,7 +7,8 @@ import { PrimeNGConfig, Translation } from 'primeng/api';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  title = 'tcc-app-course';
+  public title = 'tcc-app-course';
+
   constructor(private primengConfig: PrimeNGConfig) {}
 
   ngOnInit() {
