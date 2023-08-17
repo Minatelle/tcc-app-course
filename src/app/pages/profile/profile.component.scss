@@ -2,16 +2,16 @@
   border-width: 2px;
   border-style: solid;
   border-color: var(--text-primary);
-  width: -webkit-fill-available;
 }
 
 :host ::ng-deep .border-black .p-calendar {
+  height: 3rem;
   width: 100%;
 }
 
 :host ::ng-deep .border-black .p-calendar .p-button-icon-only {
   padding: 0rem;
-  width: 4rem !important;
+  width: 4rem;
 }
 
 :host ::ng-deep .border-black .p-calendar .p-button-icon-only .p-icon {
@@ -20,5 +20,5 @@
 }
 
 .bottom-button {
-  height: calc(100vh - 37.125rem);
+  height: calc(100vh - 39.125rem);
 }

@@ -1,14 +1,22 @@
 <section class="m-5">
   <header class="pb-7">
-    <span class="text-primary text-8xl material-icons" pRipple>account_circle</span>
-    <p class="my-2 font-bold text-2xl">Olá {{ name }}!</p>
+    <span
+      class="text-primary text-8xl material-icons"
+      (click)="navigateToProfile()"
+      pRipple
+      >account_circle</span
+    >
+    <p class="my-2 w-max font-bold text-2xl" (click)="navigateToProfile()">
+      Olá {{ name }}!
+    </p>
   </header>
 
   <main class="pt-7">
-    <span class="mb-5 w-full p-input-icon-left">
-      <i class="-mt-3 text-primary text-5xl material-icons">search</i>
+    <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
+      <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
       <input
         class="pl-6 w-full h-3rem border-solid border-2 border-black"
+        placeholder="O que deseja aprender?"
         type="text"
         pInputText
         [(ngModel)]="value"

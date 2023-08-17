@@ -4,8 +4,16 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
-  { path: 'profile', component: ProfileComponent },
+  {
+    path: '',
+    component: HomeComponent,
+    data: { animation: 'home' },
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent,
+    data: { animation: 'profile' },
+  },
 ];
 
 @NgModule({
