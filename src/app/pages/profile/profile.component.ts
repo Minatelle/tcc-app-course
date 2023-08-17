@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { UploadEvent } from 'primeng/fileupload/fileupload.interface';
@@ -9,7 +9,7 @@ import { UploadEvent } from 'primeng/fileupload/fileupload.interface';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
 })
-export class ProfileComponent {
+export class ProfileComponent implements OnInit {
   public dateToday: string = new Date().toLocaleDateString();
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl(''),
@@ -18,8 +18,19 @@ export class ProfileComponent {
 
   constructor(
     private router: Router,
+    private formBuilder: FormBuilder,
     private cookieService: CookieService
   ) { }
+
+  public ngOnInit(): void {
+    const cookieName = this.getCookie('name');
+    const cookieBirthDate = this.getCookie('birthDate');
+
+    this.formGroup = this.formBuilder.group({
+      name: [cookieName],
+      birthDate: [cookieBirthDate ? new Date(cookieBirthDate) : null]
+    });
+  }
 
   public navigateToHome() {
     this.router.navigate(['/']);
@@ -34,7 +45,12 @@ export class ProfileComponent {
     this.setCookie('birthDate', this.formGroup.value.birthDate);
   }
 
+  private getCookie(key: string) {
+    return this.cookieService.get(key);
+  }
+
   private setCookie(key: string, value: string | null): void {
+    console.log(value);
     if (value) {
       this.cookieService.set(key, value);
     }
