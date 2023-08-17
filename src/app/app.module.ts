@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DatePipe } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
@@ -14,6 +15,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @NgModule({
@@ -31,7 +33,7 @@ import { RippleModule } from 'primeng/ripple';
     InputTextModule,
     RippleModule,
   ],
-  providers: [],
+  providers: [DatePipe, CookieService],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

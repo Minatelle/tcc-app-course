@@ -13,9 +13,7 @@
     <h1 class="mr-6 w-full text-center">Perfil</h1>
   </header>
   <main>
-    <span class="mb-3 w-full text-center text-primary text-9xl material-icons">
-      account_circle
-    </span>
+    <span class="mb-3 w-full text-center text-primary text-9xl material-icons"> account_circle </span>
 
     <p-fileUpload
       class="h-3rem line-height-1 text-center"
@@ -28,28 +26,18 @@
       chooseLabel="Mudar foto"
     ></p-fileUpload>
 
-    <form class="mt-6" [formGroup]="formGroup">
+    <form class="mt-6" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <div class="flex flex-column">
-        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="name"
-          >Nome:</label
-        >
-        <input
-          class="h-3rem border-2 border-black"
-          placeholder="Digite o seu nome aqui"
-          type="text"
-          formControlName="name"
-          pInputText
-        />
+        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="name">Nome:</label>
+        <input class="h-3rem border-2 border-black" placeholder="Digite o seu nome aqui" type="text" formControlName="name" pInputText />
       </div>
       <div class="mt-4 flex flex-column w-full">
-        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="birthDate"
-          >Data de Nascimento:</label
-        >
+        <label class="flex-1 p-2 font-bold text-2xl" htmlFor="birthDate">Data de Nascimento:</label>
         <p-calendar
           class="h-3rem border-black"
           formControlName="birthDate"
           dateFormat="dd/mm/yy"
-          placeholder="{{ dateToday }}"
+          placeholder="Escolha sua data aqui"
           [inputStyleClass]="'border-black'"
           [showIcon]="true"
           [touchUI]="true"
@@ -57,13 +45,7 @@
         ></p-calendar>
       </div>
       <div class="bottom-button flex justify-content-center align-items-end">
-        <button
-          class="p-0 w-10rem h-3rem"
-          label="Salvar"
-          type="submit"
-          pButton
-          pRipple
-        ></button>
+        <button class="p-0 w-10rem h-3rem" label="Salvar" type="submit" pButton pRipple></button>
       </div>
     </form>
   </main>

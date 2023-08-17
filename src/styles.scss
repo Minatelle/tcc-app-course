@@ -1,9 +1,11 @@
-@import "assets/theme.css";
-@import "primeng/resources/primeng.css";
-@import "material-icons/iconfont/material-icons.css";
-@import "primeflex/primeflex.scss";
+@import 'assets/theme.css';
+@import 'primeng/resources/primeng.css';
+@import 'material-icons/iconfont/material-icons.css';
+@import 'primeflex/primeflex.scss';
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -19,27 +21,41 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-img, picture, video, canvas, svg {
+img,
+picture,
+video,
+canvas,
+svg {
   display: block;
   max-width: 100%;
 }
 
-input, button, textarea, select {
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
-p, h1, h2, h3, h4, h5, h6 {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   overflow-wrap: break-word;
 }
 
-#root, #__next {
+#root,
+#__next {
   isolation: isolate;
 }
 
-.text-9xl{
+.text-9xl {
   font-size: 8rem;
 }
 
-.border-black{
+.border-black {
   border-color: var(--text-primary);
 }

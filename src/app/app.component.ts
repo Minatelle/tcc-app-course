@@ -12,7 +12,7 @@ import { slideInAnimation } from './shared/route-animations/route-animations';
 export class AppComponent implements OnInit {
   public title = 'tcc-app-course';
 
-  constructor(private primeConfig: PrimeNGConfig) {}
+  constructor(private primeConfig: PrimeNGConfig) { }
 
   public ngOnInit() {
     this.primeConfig.ripple = true;
