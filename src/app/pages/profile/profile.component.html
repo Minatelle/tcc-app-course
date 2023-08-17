@@ -1,13 +1,13 @@
 <section class="m-5">
   <header class="flex align-items-center p-1">
     <button
-      class="w-3rem h-3rem bg-primary-reverse"
+      class="flex justify-content-center w-3rem h-3rem border-3 bg-primary-reverse"
       text-secondary
       pButton
       pRipple
       (click)="navigateToHome()"
     >
-      <i class="flex-1 -ml-2 material-icons">arrow_back</i>
+      <i class="flex-1 text-5xl material-icons">arrow_back</i>
     </button>
 
     <h1 class="mr-6 w-full text-center">Perfil</h1>
@@ -18,7 +18,7 @@
     </span>
 
     <p-fileUpload
-      class="text-center"
+      class="h-3rem line-height-1 text-center"
       mode="basic"
       name="demo[]"
       url="https://www.primefaces.org/cdn/api/upload.php"
@@ -34,7 +34,7 @@
           >Nome:</label
         >
         <input
-          class="border-2 border-black"
+          class="h-3rem border-2 border-black"
           placeholder="Digite o seu nome aqui"
           type="text"
           formControlName="name"
@@ -46,7 +46,7 @@
           >Data de Nascimento:</label
         >
         <p-calendar
-          class="border-black"
+          class="h-3rem border-black"
           formControlName="birthDate"
           dateFormat="dd/mm/yy"
           placeholder="{{ dateToday }}"
