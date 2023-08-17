@@ -10,7 +10,6 @@ import { UploadEvent } from 'primeng/fileupload/fileupload.interface';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  public dateToday: string = new Date().toLocaleDateString();
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl(''),
     birthDate: new FormControl<Date | null>(null),
@@ -50,7 +49,6 @@ export class ProfileComponent implements OnInit {
   }
 
   private setCookie(key: string, value: string | null): void {
-    console.log(value);
     if (value) {
       this.cookieService.set(key, value);
     }
