@@ -16,10 +16,11 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { CookieService } from 'ngx-cookie-service';
+import { SearchResultsComponent } from './pages/search-results/search-results.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent],
+  declarations: [AppComponent, HomeComponent, ProfileComponent, SearchResultsComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,

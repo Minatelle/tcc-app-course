@@ -22,6 +22,10 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['profile']);
   }
 
+  public navigateToSearchResults() {
+    this.router.navigate(['search-results']);
+  }
+
   private getCookie(key: string) {
     return this.cookieService.get(key);
   }
