@@ -10,7 +10,7 @@ export class CourseService {
   private readonly baseUrl: string;
 
   constructor(private http: HttpClient) {
-    this.baseUrl = 'http://localhost:8080/course-supply';
+    this.baseUrl = 'https://tcc-srv-course-supply.onrender.com/course-supply/';
   }
 
   public getCourses(query: string): Observable<Course[]> {
