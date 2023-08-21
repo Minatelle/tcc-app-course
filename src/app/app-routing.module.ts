@@ -8,22 +8,22 @@ const routes: Routes = [
   {
     path: '',
     component: HomeComponent,
-    data: { animation: 'home' },
+    data: { animation: 'home' }
   },
   {
     path: 'profile',
     component: ProfileComponent,
-    data: { animation: 'profile' },
+    data: { animation: 'profile' }
   },
   {
-    path: 'search-results',
+    path: 'search/:query',
     component: SearchResultsComponent,
-    data: { animation: 'search-results' },
-  },
+    data: { animation: 'search' }
+  }
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+  exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
