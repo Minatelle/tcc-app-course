@@ -17,7 +17,6 @@ export class CourseService {
     let headers: HttpHeaders = new HttpHeaders();
     headers = headers.append('query', query);
 
-    console.log(headers);
     return this.http.get<Course[]>(`${this.baseUrl}/find-course/`, { headers });
   }
 

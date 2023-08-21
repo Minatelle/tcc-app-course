@@ -17,9 +17,7 @@ export class SearchResultsComponent implements OnInit {
   public ngOnInit(): void {
     this.route.params.subscribe(params => {
       const query = params['query'];
-      console.log('query', query);
       this.courseService.getCourses(query).subscribe(courses => {
-        console.log('courses', courses);
         this.results = courses;
       });
     });
