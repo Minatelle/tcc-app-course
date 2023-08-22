@@ -7,6 +7,6 @@ import { slideLeftAnimation } from './slide-left';
 export const slideInAnimation = trigger('routeAnimations', [
   transition('home => profile', slideDownAnimation),
   transition('profile => home', slideUpAnimation),
-  transition('home => search-results', slideRightAnimation),
-  transition('search-results => home', slideLeftAnimation),
+  transition('home => search', slideRightAnimation),
+  transition('search => home', slideLeftAnimation)
 ]);

@@ -5,13 +5,12 @@ import { CookieService } from 'ngx-cookie-service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   public name: string = '';
-  public value: string = '';
-  constructor(private router: Router,
-    private cookieService: CookieService) { }
+  public query: string = '';
+  constructor(private router: Router, private cookieService: CookieService) {}
 
   public ngOnInit(): void {
     const cookieName = this.getCookie('name');
@@ -23,7 +22,9 @@ export class HomeComponent implements OnInit {
   }
 
   public navigateToSearchResults() {
-    this.router.navigate(['search-results']);
+    if (this.query) {
+      this.router.navigate([`search/${this.query}`]);
+    }
   }
 
   private getCookie(key: string) {

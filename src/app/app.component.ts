@@ -1,18 +1,18 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
-import { CalendarTranslation } from './shared/calendar-translation';
+import { CalendarTranslation } from './shared/translations/calendar-translation';
 import { RouterOutlet } from '@angular/router';
-import { slideInAnimation } from './shared/route-animations/route-animations';
+import { slideInAnimation } from './shared/animations/route-animations';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  animations: [slideInAnimation],
+  animations: [slideInAnimation]
 })
 export class AppComponent implements OnInit {
   public title = 'tcc-app-course';
 
-  constructor(private primeConfig: PrimeNGConfig) { }
+  constructor(private primeConfig: PrimeNGConfig) {}
 
   public ngOnInit() {
     this.primeConfig.ripple = true;
