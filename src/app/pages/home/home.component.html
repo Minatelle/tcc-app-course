@@ -13,10 +13,11 @@
         type="text"
         pInputText
         [(ngModel)]="query"
+        (keydown.enter)="searchResults()"
       />
     </span>
     <div class="flex gap-5">
-      <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="navigateToSearchResults()">
+      <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="searchResults()">
         <p class="w-full font-bold text-center">Pesquisar</p>
       </button>
 

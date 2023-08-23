@@ -17,10 +17,11 @@ import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { CookieService } from 'ngx-cookie-service';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
+import { NoResultsComponent } from './pages/no-results/no-results.component';
 
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent, SearchResultsComponent],
+  declarations: [AppComponent, HomeComponent, ProfileComponent, SearchResultsComponent, NoResultsComponent],
   imports: [
     AppRoutingModule,
     BrowserModule,
