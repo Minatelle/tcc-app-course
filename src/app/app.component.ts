@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { CalendarTranslation } from './shared/translations/calendar-translation';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, Router } from '@angular/router';
 import { slideInAnimation } from './shared/animations/route-animations';
+import { ConnectionService } from 'ngx-connection-service';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -11,15 +13,34 @@ import { slideInAnimation } from './shared/animations/route-animations';
 })
 export class AppComponent implements OnInit {
   public title = 'tcc-app-course';
+  private isDisconnect: boolean = false;
 
-  constructor(private primeConfig: PrimeNGConfig) {}
+  constructor(private router: Router, private primeConfig: PrimeNGConfig, private connectionService: ConnectionService) {}
 
   public ngOnInit() {
+    this.initPrimeConfig();
+    this.checkInternetAccess();
+  }
+
+  public prepareRoute(outlet: RouterOutlet) {
+    return outlet?.activatedRouteData?.['animation'];
+  }
+
+  private initPrimeConfig() {
     this.primeConfig.ripple = true;
     this.primeConfig.setTranslation(CalendarTranslation);
   }
 
-  prepareRoute(outlet: RouterOutlet) {
-    return outlet?.activatedRouteData?.['animation'];
+  private checkInternetAccess() {
+    this.connectionService.monitor().subscribe(currentState => {
+      this.isDisconnect = !currentState.hasInternetAccess;
+      this.navigateToNoConnection();
+    });
+  }
+
+  private navigateToNoConnection() {
+    if (this.isDisconnect) {
+      this.router.navigate(['no-connection']);
+    }
   }
 }
