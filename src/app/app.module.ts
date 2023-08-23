@@ -10,6 +10,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { NoResultsComponent } from './pages/no-results/no-results.component';
+import { NoConnectionComponent } from './pages/no-connection/no-connection.component';
 
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -18,7 +19,6 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { CookieService } from 'ngx-cookie-service';
-import { NoConnectionComponent } from './pages/no-connection/no-connection.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, ProfileComponent, SearchResultsComponent, NoResultsComponent, NoConnectionComponent],
