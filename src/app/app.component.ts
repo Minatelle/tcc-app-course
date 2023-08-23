@@ -13,7 +13,7 @@ import { slideInAnimation } from './shared/animations/route-animations';
 export class AppComponent implements OnInit {
   public title = 'tcc-app-course';
 
-  constructor(private router: Router, private primeConfig: PrimeNGConfig) {}
+  constructor(private primeConfig: PrimeNGConfig) {}
 
   public ngOnInit() {
     this.initPrimeConfig();
