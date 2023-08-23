@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { CalendarTranslation } from './shared/translations/calendar-translation';
 import { RouterOutlet, Router } from '@angular/router';
@@ -11,15 +11,18 @@ import { ConnectionService } from 'ngx-connection-service';
   styleUrls: ['./app.component.scss'],
   animations: [slideInAnimation]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
   public title = 'tcc-app-course';
   private isDisconnect: boolean = false;
 
   constructor(private router: Router, private primeConfig: PrimeNGConfig, private connectionService: ConnectionService) {}
 
+  public ngOnChanges() {
+    this.checkInternetAccess();
+  }
+
   public ngOnInit() {
     this.initPrimeConfig();
-    this.checkInternetAccess();
   }
 
   public prepareRoute(outlet: RouterOutlet) {
