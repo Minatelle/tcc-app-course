@@ -38,6 +38,6 @@ export class CourseService {
     if (error.status === 0 && error.error instanceof ProgressEvent) {
       this.router.navigate(['no-connection']);
     }
-    return throwError('Ocorreu um erro ao buscar os cursos. Por favor, tente novamente mais tarde.');
+    return throwError(() => new Error('Ocorreu um erro ao buscar os cursos. Por favor, tente novamente mais tarde.'));
   }
 }

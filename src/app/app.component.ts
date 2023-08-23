@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PrimeNGConfig } from 'primeng/api';
 import { CalendarTranslation } from './shared/translations/calendar-translation';
-import { RouterOutlet, Router } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { slideInAnimation } from './shared/animations/route-animations';
 
 @Component({
