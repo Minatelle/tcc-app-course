@@ -7,19 +7,15 @@ import { UploadEvent } from 'primeng/fileupload/fileupload.interface';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss'],
+  styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl(''),
-    birthDate: new FormControl<Date | null>(null),
+    birthDate: new FormControl<Date | null>(null)
   });
 
-  constructor(
-    private router: Router,
-    private formBuilder: FormBuilder,
-    private cookieService: CookieService
-  ) { }
+  constructor(private router: Router, private formBuilder: FormBuilder, private cookieService: CookieService) {}
 
   public ngOnInit(): void {
     const cookieName = this.getCookie('name');

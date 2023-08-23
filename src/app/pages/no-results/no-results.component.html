@@ -1,0 +1,27 @@
+<section class="m-5">
+  <header class="flex align-items-center p-1">
+    <button
+      class="flex justify-content-center w-3rem h-3rem border-3 bg-primary-reverse"
+      text-secondary
+      pButton
+      pRipple
+      (click)="navigateToHome()"
+    >
+      <i class="flex-1 text-5xl material-icons">arrow_back</i>
+    </button>
+
+    <h1 class="mr-6 w-full text-center">Sem resultados</h1>
+  </header>
+  <main class="mt-7">
+    <div class="flex justify-content-center w-full">
+      <img class="mt-7 w-11rem" src="assets/warning.svg" alt="símbolo de aviso amarelo com exclamação preta no meio" />
+    </div>
+    <div class="mt-5 flex flex-column justify-content-center">
+      <h1 class="text-center">Nenhum resultado encontrado</h1>
+      <p class="mt-2 px-5 text-lg text-center">Opa... esse tema ainda não está disponivel</p>
+    </div>
+    <div class="mt-6 flex justify-content-center align-items-end">
+      <button class="p-0 w-10rem h-3rem" label="Voltar" (click)="navigateToHome()" pButton pRipple></button>
+    </div>
+  </main>
+</section>

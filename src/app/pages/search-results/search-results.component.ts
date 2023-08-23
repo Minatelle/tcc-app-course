@@ -26,4 +26,8 @@ export class SearchResultsComponent implements OnInit {
   public navigateToHome() {
     this.router.navigate(['/']);
   }
+
+  public navigateNoResults() {
+    this.router.navigate(['/no-results']);
+  }
 }
