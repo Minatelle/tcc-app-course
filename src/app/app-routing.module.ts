@@ -5,7 +5,6 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { NoResultsComponent } from './pages/no-results/no-results.component';
 import { NoConnectionComponent } from './pages/no-connection/no-connection.component';
-import { NetworkGuard } from './shared/services/network-guard/network-guard.service';
 
 const routes: Routes = [
   {
@@ -16,7 +15,6 @@ const routes: Routes = [
   {
     path: 'profile',
     component: ProfileComponent,
-    canActivate: [NetworkGuard],
     data: { animation: 'profile' }
   },
   {
@@ -27,13 +25,11 @@ const routes: Routes = [
   {
     path: 'no-results',
     component: NoResultsComponent,
-    canActivate: [NetworkGuard],
     data: { animation: 'no-results' }
   },
   {
     path: 'search/:query',
     component: SearchResultsComponent,
-    canActivate: [NetworkGuard],
     data: { animation: 'search' }
   }
 ];

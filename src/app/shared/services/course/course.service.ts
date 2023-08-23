@@ -1,7 +1,8 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Course } from '../../models/course.interface';
-import { Observable, shareReplay } from 'rxjs';
+import { Observable, catchError, shareReplay, throwError } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class CourseService {
   private courses: Observable<Course[]> | undefined;
   private lastQuery: string | undefined;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private router: Router) {
     this.baseUrl = 'https://tcc-srv-course-supply.onrender.com/course-supply/';
   }
 
@@ -20,7 +21,10 @@ export class CourseService {
       let headers: HttpHeaders = new HttpHeaders();
       headers = headers.append('query', query);
 
-      this.courses = this.http.get<Course[]>(`${this.baseUrl}/find-course/`, { headers }).pipe(shareReplay(1));
+      this.courses = this.http.get<Course[]>(`${this.baseUrl}/find-course/`, { headers }).pipe(
+        shareReplay(1),
+        catchError((error: HttpErrorResponse) => this.handleError(error))
+      );
       this.lastQuery = query;
     }
     return this.courses;
@@ -28,5 +32,12 @@ export class CourseService {
 
   public getCourseContent(id: string): Observable<Course> {
     return this.http.get<Course>(`${this.baseUrl}/find-course/${id}`);
+  }
+
+  private handleError(error: HttpErrorResponse) {
+    if (error.status === 0 && error.error instanceof ProgressEvent) {
+      this.router.navigate(['no-connection']);
+    }
+    return throwError('Ocorreu um erro ao buscar os cursos. Por favor, tente novamente mais tarde.');
   }
 }
