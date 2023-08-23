@@ -4,6 +4,7 @@ import { HomeComponent } from './pages/home/home.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { NoResultsComponent } from './pages/no-results/no-results.component';
+import { NoConnectionComponent } from './pages/no-connection/no-connection.component';
 
 const routes: Routes = [
   {
@@ -15,6 +16,11 @@ const routes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     data: { animation: 'profile' }
+  },
+  {
+    path: 'no-connection',
+    component: NoConnectionComponent,
+    data: { animation: 'no-connection' }
   },
   {
     path: 'no-results',

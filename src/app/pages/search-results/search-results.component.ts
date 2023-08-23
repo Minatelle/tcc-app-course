@@ -1,8 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/shared/models/course.interface';
 import { CourseService } from '../../shared/services/course/course.service';
-import { query } from '@angular/animations';
 
 @Component({
   selector: 'app-search-results',
