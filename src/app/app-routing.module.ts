@@ -5,6 +5,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { NoResultsComponent } from './pages/no-results/no-results.component';
 import { NoConnectionComponent } from './pages/no-connection/no-connection.component';
+import { CourseComponent } from './pages/course/course.component';
 
 const routes: Routes = [
   {
@@ -31,6 +32,11 @@ const routes: Routes = [
     path: 'search/:query',
     component: SearchResultsComponent,
     data: { animation: 'search' }
+  },
+  {
+    path: 'course/:id',
+    component: CourseComponent,
+    data: { animation: 'course' }
   }
 ];
 

@@ -10,7 +10,9 @@ export const slideInAnimation = trigger('routeAnimations', [
   transition('search => home', slideLeftAnimation),
   transition('no-results => home', slideLeftAnimation),
   transition('no-connection => home', slideLeftAnimation),
-  transition('home => search', slideRightAnimation),
   transition('home => no-results', slideRightAnimation),
-  transition('* => no-connection', slideRightAnimation)
+  transition('home => no-connection', slideRightAnimation),
+  transition('home => search', slideRightAnimation),
+  transition('search => course', slideRightAnimation),
+  transition('course => search', slideLeftAnimation)
 ]);

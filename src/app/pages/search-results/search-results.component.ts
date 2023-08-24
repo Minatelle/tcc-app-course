@@ -9,7 +9,7 @@ import { CourseService } from '../../shared/services/course/course.service';
   styleUrls: ['./search-results.component.scss']
 })
 export class SearchResultsComponent implements OnInit {
-  public results: Course[] = [];
+  public courses: Course[] = [];
 
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService) {}
 
@@ -17,7 +17,7 @@ export class SearchResultsComponent implements OnInit {
     this.route.params.subscribe(params => {
       const query = params['query'];
       this.courseService.getCourses(query).subscribe(courses => {
-        this.results = courses;
+        this.courses = courses;
       });
     });
   }
@@ -26,7 +26,11 @@ export class SearchResultsComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
+  public navigateToCourse(id: string) {
+    this.router.navigate([`course/${id}`]);
+  }
+
   public navigateNoResults() {
-    this.router.navigate(['/no-results']);
+    this.router.navigate(['no-results']);
   }
 }
