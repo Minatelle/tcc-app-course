@@ -10,7 +10,9 @@ import { Router } from '@angular/router';
 export class CourseService {
   private readonly baseUrl: string;
   private courses: Observable<Course[]> | undefined;
+  private course: Observable<Course> | undefined;
   private lastQuery: string | undefined;
+  private lastId: string | undefined;
 
   constructor(private http: HttpClient, private router: Router) {
     this.baseUrl = 'https://tcc-srv-course-supply.onrender.com/course-supply/';
@@ -31,7 +33,14 @@ export class CourseService {
   }
 
   public getCourseContent(id: string): Observable<Course> {
-    return this.http.get<Course>(`${this.baseUrl}/find-course/${id}`);
+    if (!this.course || this.lastId !== id) {
+      this.course = this.http.get<Course>(`${this.baseUrl}/find-course/${id}`).pipe(
+        shareReplay(1),
+        catchError((error: HttpErrorResponse) => this.handleError(error))
+      );
+      this.lastId = id;
+    }
+    return this.course;
   }
 
   private handleError(error: HttpErrorResponse) {

@@ -27,7 +27,9 @@ export class SearchResultsComponent implements OnInit {
   }
 
   public navigateToCourse(id: string) {
-    this.router.navigate([`course/${id}`]);
+    this.courseService.getCourseContent(id).subscribe(() => {
+      this.router.navigate([`course/${id}`]);
+    });
   }
 
   public navigateNoResults() {
