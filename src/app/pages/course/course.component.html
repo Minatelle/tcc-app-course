@@ -1,0 +1,27 @@
+<section class="m-5">
+  <header class="flex align-items-center p-1">
+    <button
+      class="flex justify-content-center w-3rem h-3rem border-3 bg-primary-reverse"
+      text-secondary
+      pButton
+      pRipple
+      (click)="navigateBack()"
+    >
+      <i class="flex-1 text-5xl material-icons">arrow_back</i>
+    </button>
+
+    <h1 class="ml-5 w-full">{{ course?.title }}</h1>
+  </header>
+  <main>
+    <video class="mt-2 w-full" controls>
+      <source *ngIf="course?.urlVideo" [src]="course?.urlVideo" type="video/mp4" />
+      <track label="Português" kind="captions" srclang="pt" [src]="" default />
+    </video>
+    <div class="mt-2 flex-column justify-content-center">
+      <h1>Acompanhe abaixo:</h1>
+      <div class="mt-2 text-lg" *ngFor="let line of contentLines">
+        <p>{{ line }}<br /></p>
+      </div>
+    </div>
+  </main>
+</section>

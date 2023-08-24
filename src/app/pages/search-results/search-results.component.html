@@ -14,11 +14,11 @@
   </header>
   <main class="mt-5 align-items-center">
     <hr />
-    <div class="mt-5" *ngFor="let result of results">
-      <div class="flex justify-content-center">
-        <img class="border-round w-7rem" src="{{ result.urlImage }}" alt="" />
+    <div class="mt-5" *ngFor="let course of courses">
+      <div class="flex justify-content-center" (click)="navigateToCourse(course.id)">
+        <img class="border-round w-7rem" src="{{ course.urlImage }}" alt="" />
         <div class="col justify-content-center">
-          <h3 class="pl-3 line-height-3">{{ result.title }}</h3>
+          <h3 class="pl-3 line-height-3">{{ course.title }}</h3>
           <button
             class="flex justify-content-center w-full h-3rem border-3 bg-primary-reverse text-lg"
             text-secondary

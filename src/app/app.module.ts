@@ -11,6 +11,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { NoResultsComponent } from './pages/no-results/no-results.component';
 import { NoConnectionComponent } from './pages/no-connection/no-connection.component';
+import { CourseComponent } from './pages/course/course.component';
 
 import { AvatarModule } from 'primeng/avatar';
 import { ButtonModule } from 'primeng/button';
@@ -21,7 +22,15 @@ import { RippleModule } from 'primeng/ripple';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, ProfileComponent, SearchResultsComponent, NoResultsComponent, NoConnectionComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    ProfileComponent,
+    NoResultsComponent,
+    NoConnectionComponent,
+    SearchResultsComponent,
+    CourseComponent
+  ],
   imports: [
     AppRoutingModule,
     BrowserModule,
