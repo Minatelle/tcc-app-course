@@ -36,7 +36,7 @@
       chooseLabel="Mudar foto"
       [auto]="true"
       [customUpload]="true"
-      (uploadHandler)="uploadHandler($event, fileUpload)"
+      (uploadHandler)="onUploadProfilePicture($event, fileUpload)"
     ></p-fileUpload>
 
     <form class="mt-6" [formGroup]="formGroup" (ngSubmit)="onSubmit()">

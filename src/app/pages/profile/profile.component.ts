@@ -41,7 +41,7 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  public uploadHandler(event: FileUploadHandlerEvent, fileUpload: any) {
+  public onUploadProfilePicture(event: FileUploadHandlerEvent, fileUpload: any) {
     this.uploadService.uploadProfilePicture(event.files[0]).subscribe(response => {
       this.setCookie('profilePictureURL', response.url);
       this.profilePictureURL = response.url;
