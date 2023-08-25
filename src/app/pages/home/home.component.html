@@ -1,11 +1,11 @@
 <section class="m-5">
   <header class="pb-7">
-    <div *ngIf="profilePictureURL; else avatarIcon" (click)="navigateToProfile()">
+    <div class="border-circle w-6rem h-6rem" *ngIf="profilePictureURL; else avatarIcon" (click)="navigateToProfile()" pRipple>
       <img class="mb-3 border-circle border-2 border-black w-6rem h-6rem" src="{{ profilePictureURL }}" style="object-fit: cover" alt="" />
     </div>
     <ng-template #avatarIcon>
-      <div (click)="navigateToProfile()">
-        <span class="text-primary text-8xl material-icons" pRipple>account_circle</span>
+      <div class="border-circle w-6rem h-6rem" (click)="navigateToProfile()" pRipple>
+        <span class="text-primary text-8xl material-icons">account_circle</span>
       </div>
     </ng-template>
     <p class="my-2 w-max font-bold text-2xl" (click)="navigateToProfile()">Olá{{ name }}!</p>
