@@ -13,17 +13,30 @@
     <h1 class="mr-6 w-full text-center">Perfil</h1>
   </header>
   <main>
-    <span class="mb-3 w-full text-center text-primary text-9xl material-icons"> account_circle </span>
+    <div *ngIf="profilePictureURL; else avatarIcon">
+      <img
+        class="mb-5 mx-auto border-circle border-2 border-black w-7rem h-7rem"
+        src="{{ profilePictureURL }}"
+        style="object-fit: cover"
+        alt=""
+      />
+    </div>
+    <ng-template #avatarIcon>
+      <div>
+        <span class="mb-3 w-full text-center text-primary text-9xl material-icons"> account_circle </span>
+      </div>
+    </ng-template>
 
     <p-fileUpload
+      #fileUpload
       class="h-3rem line-height-1 text-center"
       mode="basic"
       name="demo[]"
-      url="https://www.primefaces.org/cdn/api/upload.php"
       accept="image/*"
-      (onUpload)="onBasicUploadAuto($event)"
-      [auto]="true"
       chooseLabel="Mudar foto"
+      [auto]="true"
+      [customUpload]="true"
+      (uploadHandler)="onUploadProfilePicture($event, fileUpload)"
     ></p-fileUpload>
 
     <form class="mt-6" [formGroup]="formGroup" (ngSubmit)="onSubmit()">

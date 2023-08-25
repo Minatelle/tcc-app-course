@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { UploadEvent } from 'primeng/fileupload/fileupload.interface';
+import { FileUploadHandlerEvent } from 'primeng/fileupload/fileupload.interface';
+import { UploadService } from '../../shared/services/upload/upload.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,11 +16,20 @@ export class ProfileComponent implements OnInit {
     birthDate: new FormControl<Date | null>(null)
   });
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private cookieService: CookieService) {}
+  public profilePictureURL: string | undefined;
+
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private cookieService: CookieService,
+    private uploadService: UploadService
+  ) {}
 
   public ngOnInit(): void {
     const cookieName = this.getCookie('name');
     const cookieBirthDate = this.getCookie('birthDate');
+
+    this.profilePictureURL = this.getCookie('profilePictureURL');
 
     this.formGroup = this.formBuilder.group({
       name: [cookieName],
@@ -31,8 +41,13 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  public onBasicUploadAuto(event: UploadEvent) {
-    console.log('Send!', event);
+  public onUploadProfilePicture(event: FileUploadHandlerEvent, fileUpload: any) {
+    this.uploadService.uploadProfilePicture(event.files[0]).subscribe(response => {
+      this.setCookie('profilePictureURL', response.url);
+      this.profilePictureURL = response.url;
+
+      fileUpload.clear();
+    });
   }
 
   public onSubmit(): void {
