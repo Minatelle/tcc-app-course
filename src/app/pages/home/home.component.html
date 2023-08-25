@@ -1,7 +1,12 @@
 <section class="m-5">
   <header class="pb-7">
     <div class="border-circle w-6rem h-6rem" *ngIf="profilePictureURL; else avatarIcon" (click)="navigateToProfile()" pRipple>
-      <img class="mb-3 border-circle border-2 border-black w-6rem h-6rem" src="{{ profilePictureURL }}" style="object-fit: cover" alt="" />
+      <img
+        class="mb-3 border-circle border-2 border-black w-6rem h-6rem"
+        src="{{ profilePictureURL }}"
+        style="object-fit: cover"
+        alt="Foto do perfil do usuário"
+      />
     </div>
     <ng-template #avatarIcon>
       <div class="border-circle w-6rem h-6rem" (click)="navigateToProfile()" pRipple>
