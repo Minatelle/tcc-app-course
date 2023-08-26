@@ -23,5 +23,30 @@
         <p>{{ line }}<br /></p>
       </div>
     </div>
+    <div class="bottom-section flex justify-content-center align-items-end">
+      <div class="flex-column">
+        <h1 class="text-center">Gostou do Tutorial?</h1>
+        <div class="mt-2 flex justify-content-center">
+          <button
+            class="mr-3 w-5rem h-5rem border-noround-right border-circle-left p-button-danger"
+            [ngClass]="{ selected: liked }"
+            (click)="giveFeedback(feedback.Like)"
+            pButton
+            pRipple
+          >
+            <i class="-ml-1 text-6xl text-center material-icons">thumb_down</i>
+          </button>
+          <button
+            class="ml-3 w-5rem h-5rem border-noround-left border-circle-right p-button-success"
+            [ngClass]="{ selected: disliked }"
+            (click)="giveFeedback(feedback.Dislike)"
+            pButton
+            pRipple
+          >
+            <i class="-ml-1 text-6xl text-center material-icons">thumb_up</i>
+          </button>
+        </div>
+      </div>
+    </div>
   </main>
 </section>
