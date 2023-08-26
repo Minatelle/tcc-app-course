@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Course } from 'src/app/shared/models/course.interface';
 import { CourseService } from 'src/app/shared/services/course/course.service';
 import { Location } from '@angular/common';
+import { Feedback } from 'src/app/shared/enums/feedback.enum';
 @Component({
   selector: 'app-course',
   templateUrl: './course.component.html',
@@ -11,8 +12,14 @@ import { Location } from '@angular/common';
 export class CourseComponent implements OnInit {
   public course: Course | undefined;
   public contentLines: string[] = [];
+  public disliked: boolean = false;
+  public liked: boolean = false;
 
   constructor(private location: Location, private route: ActivatedRoute, private courseService: CourseService) {}
+
+  public get feedback(): typeof Feedback {
+    return Feedback;
+  }
 
   public ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -30,5 +37,15 @@ export class CourseComponent implements OnInit {
 
   public getContentLines(content: string): string[] {
     return content.split('\\n');
+  }
+
+  public giveFeedback(feedback: Feedback) {
+    if (feedback === Feedback.Like) {
+      this.disliked = !this.disliked;
+      this.liked = false;
+    } else if (feedback === Feedback.Dislike) {
+      this.liked = !this.liked;
+      this.disliked = false;
+    }
   }
 }

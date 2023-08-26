@@ -19,6 +19,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
@@ -42,7 +43,8 @@ import { CookieService } from 'ngx-cookie-service';
     CalendarModule,
     FileUploadModule,
     InputTextModule,
-    RippleModule
+    RippleModule,
+    SelectButtonModule
   ],
   providers: [DatePipe, CookieService],
   bootstrap: [AppComponent]
