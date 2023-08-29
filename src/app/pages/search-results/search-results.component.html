@@ -14,7 +14,7 @@
   </header>
   <main class="mt-5 align-items-center">
     <hr />
-    <div class="mt-5" *ngFor="let course of courses">
+    <div class="mt-5" *ngFor="let course of displayedCourses">
       <div class="flex justify-content-center" (click)="navigateToCourse(course.id)">
         <img class="border-round w-7rem" src="{{ course.urlImage }}" alt="" />
         <div class="col justify-content-center">
@@ -30,5 +30,22 @@
       </div>
       <hr class="mt-5" />
     </div>
+    <p-paginator
+      class="p-0"
+      (onPageChange)="onPageChange($event)"
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="courses.length"
+      [pageLinkSize]="1"
+      [showFirstLastIcon]="false"
+      previousPageLinkIconTemplate="<span>asufobusafh</span>"
+    >
+      <ng-template pTemplate="previouspagelinkicon" ngClass="">
+        <button label="Anterior" class="px-3 h-3rem border-none bg-primary-reverse text-lg" pButton pRipple></button>
+      </ng-template>
+      <ng-template pTemplate="nextpagelinkicon">
+        <button label="Próxima" class="px-3 h-3rem border-none bg-primary-reverse text-lg" pButton pRipple></button>
+      </ng-template>
+    </p-paginator>
   </main>
 </section>
