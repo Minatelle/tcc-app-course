@@ -1,0 +1,10 @@
+::ng-deep button.p-link.p-disabled {
+  visibility: hidden;
+}
+
+::ng-deep .p-paginator {
+  padding: 0px;
+  justify-content: space-between !important;
+  align-items: end !important;
+  height: calc(100vh - 46rem);
+}
