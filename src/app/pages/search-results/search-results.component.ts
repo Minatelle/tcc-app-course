@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Course } from 'src/app/shared/models/course.interface';
 import { CourseService } from '../../shared/services/course/course.service';
-
 @Component({
   selector: 'app-search-results',
   templateUrl: './search-results.component.html',
@@ -10,6 +9,9 @@ import { CourseService } from '../../shared/services/course/course.service';
 })
 export class SearchResultsComponent implements OnInit {
   public courses: Course[] = [];
+  public displayedCourses: Course[] = [];
+  public first: number = 0;
+  public rows: number = 3;
 
   constructor(private router: Router, private route: ActivatedRoute, private courseService: CourseService) {}
 
@@ -18,8 +20,15 @@ export class SearchResultsComponent implements OnInit {
       const query = params['query'];
       this.courseService.getCourses(query).subscribe(courses => {
         this.courses = courses;
+        this.displayedCourses = this.courses.slice(this.first, this.first + this.rows);
       });
     });
+  }
+
+  public onPageChange(event: any): void {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.displayedCourses = this.courses.slice(this.first, this.first + this.rows);
   }
 
   public navigateToHome() {

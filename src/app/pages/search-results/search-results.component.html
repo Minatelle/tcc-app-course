@@ -12,9 +12,9 @@
 
     <h1 class="mr-6 w-full text-center">Resultados Encontrados</h1>
   </header>
-  <main class="mt-5 align-items-center">
+  <main class="mt-5">
     <hr />
-    <div class="mt-5" *ngFor="let course of courses">
+    <div class="mt-5" *ngFor="let course of displayedCourses">
       <div class="flex justify-content-center" (click)="navigateToCourse(course.id)">
         <img class="border-round w-7rem" src="{{ course.urlImage }}" alt="" />
         <div class="col justify-content-center">
@@ -30,5 +30,22 @@
       </div>
       <hr class="mt-5" />
     </div>
+
+    <p-paginator
+      (onPageChange)="onPageChange($event)"
+      [first]="first"
+      [rows]="rows"
+      [totalRecords]="courses.length"
+      [pageLinkSize]="1"
+      [showFirstLastIcon]="false"
+      previousPageLinkIconTemplate="<span>asufobusafh</span>"
+    >
+      <ng-template pTemplate="previouspagelinkicon">
+        <p class="px-4 text-lg">Anterior</p>
+      </ng-template>
+      <ng-template pTemplate="nextpagelinkicon">
+        <p class="px-4 text-lg">Próxima</p>
+      </ng-template>
+    </p-paginator>
   </main>
 </section>

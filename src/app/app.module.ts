@@ -19,7 +19,7 @@ import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
-import { SelectButtonModule } from 'primeng/selectbutton';
+import { PaginatorModule } from 'primeng/paginator';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
@@ -44,7 +44,7 @@ import { CookieService } from 'ngx-cookie-service';
     FileUploadModule,
     InputTextModule,
     RippleModule,
-    SelectButtonModule
+    PaginatorModule
   ],
   providers: [DatePipe, CookieService],
   bootstrap: [AppComponent]
