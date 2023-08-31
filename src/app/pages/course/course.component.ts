@@ -11,7 +11,10 @@ import { Feedback } from 'src/app/shared/enums/feedback.enum';
 })
 export class CourseComponent implements OnInit {
   public course: Course | undefined;
-  public contentLines: string[] = [];
+  public courseSteps: string[] = [];
+  public displayedCourseSteps: string[] = [];
+  public first: number = 0;
+  public rows: number = 2;
   public disliked: boolean = false;
   public liked: boolean = false;
 
@@ -26,9 +29,16 @@ export class CourseComponent implements OnInit {
       const id = params['id'];
       this.courseService.getCourseContent(id).subscribe(course => {
         this.course = course;
-        this.contentLines = this.getContentLines(course?.content);
+        this.courseSteps = this.getContentLines(course?.content);
+        this.displayedCourseSteps = this.courseSteps.slice(this.first, this.first + this.rows);
       });
     });
+  }
+
+  public onPageChange(event: any): void {
+    this.first = event.first;
+    this.rows = event.rows;
+    this.displayedCourseSteps = this.courseSteps.slice(this.first, this.first + this.rows);
   }
 
   public navigateBack() {

@@ -32,13 +32,13 @@
     </div>
 
     <p-paginator
+      *ngIf="courses.length > rows"
       (onPageChange)="onPageChange($event)"
-      [first]="first"
-      [rows]="rows"
-      [totalRecords]="courses.length"
       [pageLinkSize]="1"
       [showFirstLastIcon]="false"
-      previousPageLinkIconTemplate="<span>asufobusafh</span>"
+      [totalRecords]="courses.length"
+      [rows]="rows"
+      [first]="first"
     >
       <ng-template pTemplate="previouspagelinkicon">
         <p class="px-4 text-lg">Anterior</p>
