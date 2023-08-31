@@ -17,11 +17,30 @@
       <source *ngIf="course?.urlVideo" [src]="course?.urlVideo" type="video/mp4" />
       <track label="Português" kind="captions" srclang="pt" [src]="" default />
     </video>
-    <div class="mt-2 flex-column justify-content-center">
-      <h1>Acompanhe abaixo:</h1>
-      <div class="mt-2 text-lg" *ngFor="let line of contentLines">
-        <p>{{ line }}<br /></p>
+    <div class="mt-2 flex flex-wrap align-content-between h-18rem">
+      <div>
+        <h1>Acompanhe abaixo:</h1>
+        <div class="mt-2 text-lg" *ngFor="let step of displayedCourseSteps">
+          <p>{{ step }}</p>
+        </div>
       </div>
+      <p-paginator
+        class="w-full"
+        *ngIf="courseSteps.length > rows"
+        (onPageChange)="onPageChange($event)"
+        [pageLinkSize]="1"
+        [showFirstLastIcon]="false"
+        [totalRecords]="courseSteps.length"
+        [rows]="rows"
+        [first]="first"
+      >
+        <ng-template pTemplate="previouspagelinkicon">
+          <p class="px-4 text-lg">Anterior</p>
+        </ng-template>
+        <ng-template pTemplate="nextpagelinkicon">
+          <p class="px-4 text-lg">Próxima</p>
+        </ng-template>
+      </p-paginator>
     </div>
     <div class="bottom-section flex justify-content-center align-items-end">
       <div class="flex-column">

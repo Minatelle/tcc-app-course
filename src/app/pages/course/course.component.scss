@@ -1,5 +1,14 @@
+::ng-deep button.p-link.p-disabled {
+  visibility: hidden;
+}
+
+::ng-deep .p-paginator {
+  padding: 0px;
+  justify-content: space-between !important;
+}
+
 .bottom-section {
-  height: calc(100vh - 34.5rem);
+  height: calc(100vh - 40rem);
 }
 
 .selected {
