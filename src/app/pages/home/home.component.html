@@ -1,5 +1,5 @@
 <section class="m-5">
-  <header class="pb-7">
+  <header class="flex pb-3" (click)="navigateToProfile()">
     <div class="border-circle w-6rem h-6rem" *ngIf="profilePictureURL; else avatarIcon" (click)="navigateToProfile()" pRipple>
       <img
         class="mb-3 border-circle border-2 border-black w-6rem h-6rem"
@@ -9,34 +9,43 @@
       />
     </div>
     <ng-template #avatarIcon>
-      <div class="border-circle w-6rem h-6rem" (click)="navigateToProfile()" pRipple>
+      <div class="border-circle w-6rem h-6rem" pRipple>
         <span class="text-primary text-8xl material-icons">account_circle</span>
       </div>
     </ng-template>
-    <p class="my-2 w-max font-bold text-2xl" (click)="navigateToProfile()">Olá{{ name }}!</p>
+    <div class="mx-4 w-max">
+      <p class="mb-2 w-max font-bold text-4xl">Perfil</p>
+      <p class="mt-2 w-max font-bold text-2xl">Olá{{ name }}!</p>
+    </div>
   </header>
+  <hr />
 
-  <main class="pt-7">
-    <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
-      <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
-      <input
-        class="pl-6 w-full h-3rem border-solid border-2 border-black"
-        placeholder="O que deseja aprender?"
-        type="text"
-        pInputText
-        [(ngModel)]="query"
-        (keydown.enter)="searchResults()"
-      />
-    </span>
-    <div class="flex gap-5">
-      <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="searchResults()">
-        <p class="w-full font-bold text-center">Pesquisar</p>
-      </button>
+  <main class="pt-8">
+    <div class="pt-8">
+      <div class="pt-8">
+        <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
+          <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
+          <input
+            class="pl-6 w-full h-3rem border-solid border-2 border-black"
+            placeholder="O que deseja aprender?"
+            type="text"
+            pInputText
+            [(ngModel)]="query"
+            (keydown.enter)="searchResults()"
+          />
+        </span>
+      </div>
 
-      <button class="flex-1 p-0 h-3rem" pButton pRipple>
-        <i class="pl-1 text-5xl material-icons">mic</i>
-        <p class="pr-5 w-full font-bold text-center">Voz</p>
-      </button>
+      <div class="flex gap-5">
+        <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="searchResults()">
+          <p class="w-full font-bold text-center">Pesquisar</p>
+        </button>
+
+        <button class="flex-1 p-0 h-3rem" pButton pRipple>
+          <i class="pl-1 text-5xl material-icons">mic</i>
+          <p class="pr-5 w-full font-bold text-center">Voz</p>
+        </button>
+      </div>
     </div>
   </main>
 </section>
