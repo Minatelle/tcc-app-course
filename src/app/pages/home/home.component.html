@@ -30,6 +30,7 @@
             placeholder="O que deseja aprender?"
             type="text"
             pInputText
+            name="query"
             [(ngModel)]="query"
             (keydown.enter)="searchResults()"
           />
@@ -41,10 +42,16 @@
           <p class="w-full font-bold text-center">Pesquisar</p>
         </button>
 
-        <button class="flex-1 p-0 h-3rem" pButton pRipple>
+        <button class="flex-1 p-0 h-3rem" *ngIf="!isUserSpeaking; else voiceStopButton" pButton pRipple (click)="startRecording()">
           <i class="pl-1 text-5xl material-icons">mic</i>
           <p class="pr-5 w-full font-bold text-center">Voz</p>
         </button>
+        <ng-template #voiceStopButton>
+          <button class="flex-1 p-0 h-3rem border-3 bg-primary-reverse" pButton pRipple (click)="stopRecording()">
+            <i class="pl-1 text-5xl material-icons">mic</i>
+            <p class="pr-5 w-full font-bold text-center">Parar</p>
+          </button>
+        </ng-template>
       </div>
     </div>
   </main>
