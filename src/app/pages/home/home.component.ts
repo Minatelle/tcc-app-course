@@ -62,7 +62,6 @@ export class HomeComponent implements OnInit {
     this.voiceRecognition.speechInput().subscribe(input => {
       // Set voice text output to
       this.query = input;
-      console.log(input);
     });
   }
 
