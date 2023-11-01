@@ -20,6 +20,7 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
 import { RippleModule } from 'primeng/ripple';
 import { PaginatorModule } from 'primeng/paginator';
+import { DialogModule } from 'primeng/dialog';
 import { CookieService } from 'ngx-cookie-service';
 
 @NgModule({
@@ -44,7 +45,8 @@ import { CookieService } from 'ngx-cookie-service';
     FileUploadModule,
     InputTextModule,
     RippleModule,
-    PaginatorModule
+    PaginatorModule,
+    DialogModule
   ],
   providers: [DatePipe, CookieService],
   bootstrap: [AppComponent]

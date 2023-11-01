@@ -39,6 +39,13 @@
       (uploadHandler)="onUploadProfilePicture($event, fileUpload)"
     ></p-fileUpload>
 
+    <p-dialog [(visible)]="showDialog" [showHeader]="false" [modal]="true" [closable]="false" [style]="{ width: '60vw' }">
+      <div class="flex flex-column justify-content-center">
+        <img class="pt-5 px-5 w-full text-center" src="/assets/saved.gif" alt="animação de checar" />
+        <p class="mt-4 text-center font-bold text-3xl">Perfil salvo!</p>
+      </div>
+    </p-dialog>
+
     <form class="mt-6" [formGroup]="formGroup" (ngSubmit)="onSubmit()">
       <div class="flex flex-column">
         <label class="flex-1 p-2 font-bold text-2xl" htmlFor="name">Nome:</label>
