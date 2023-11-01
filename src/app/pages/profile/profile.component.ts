@@ -11,6 +11,7 @@ import { UploadService } from '../../shared/services/upload/upload.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  public showDialog: boolean = false;
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl(''),
     birthDate: new FormControl<Date | null>(null)
@@ -26,6 +27,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
+    this.showDialog = false;
     const cookieName = this.getCookie('name');
     const cookieBirthDate = this.getCookie('birthDate');
 
@@ -53,6 +55,8 @@ export class ProfileComponent implements OnInit {
   public onSubmit(): void {
     this.setCookie('name', this.formGroup.value.name);
     this.setCookie('birthDate', this.formGroup.value.birthDate);
+    this.showDialog = true;
+    setTimeout(() => this.navigateToHome(), 2500);
   }
 
   private getCookie(key: string) {
