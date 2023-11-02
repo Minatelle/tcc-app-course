@@ -13,9 +13,14 @@
         <span class="text-primary text-8xl material-icons">account_circle</span>
       </div>
     </ng-template>
-    <div class="mx-4 w-max">
+    <div class="mx-2 w-max">
       <p class="mb-2 w-max font-bold text-4xl">Perfil</p>
-      <p class="mt-2 w-max font-bold text-2xl">Olá{{ name }}!</p>
+      <div *ngIf="name; else welcomeMessage">
+        <p class="mt-2 w-max font-bold text-2xl">Olá, {{ name }}</p>
+      </div>
+      <ng-template #welcomeMessage>
+        <p class="mt-2 w-max font-bold text-2xl">Olá, seja bem vindo</p>
+      </ng-template>
     </div>
   </header>
   <hr />
