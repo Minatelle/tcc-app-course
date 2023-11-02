@@ -27,6 +27,28 @@
   border-radius: var(--border-radius);
 }
 
+:host ::ng-deep .inputMask .p-inputtext {
+  height: 3rem;
+  width: 100%;
+  border-color: var(--text-primary);
+  border-width: 2px;
+}
+
+:host ::ng-deep .p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #c7d2fe;
+  border-color: #6366f1;
+}
+
+:host ::ng-deep .p-inputtext.ng-dirty.ng-invalid,
+:host ::ng-deep .ng-invalid > .p-inputtext:enabled:focus {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fec7c7;
+  border-color: #e24c4c;
+}
+
 .bottom-button {
-  height: calc(100vh - 40.5rem);
+  height: calc(100vh - 45rem);
 }

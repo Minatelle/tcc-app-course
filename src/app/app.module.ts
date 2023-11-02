@@ -18,6 +18,7 @@ import { ButtonModule } from 'primeng/button';
 import { CalendarModule } from 'primeng/calendar';
 import { FileUploadModule } from 'primeng/fileupload';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputMaskModule } from 'primeng/inputmask';
 import { RippleModule } from 'primeng/ripple';
 import { PaginatorModule } from 'primeng/paginator';
 import { DialogModule } from 'primeng/dialog';
@@ -44,6 +45,7 @@ import { CookieService } from 'ngx-cookie-service';
     CalendarModule,
     FileUploadModule,
     InputTextModule,
+    InputMaskModule,
     RippleModule,
     PaginatorModule,
     DialogModule

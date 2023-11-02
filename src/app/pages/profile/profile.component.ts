@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { FileUploadHandlerEvent } from 'primeng/fileupload/fileupload.interface';
@@ -11,11 +11,22 @@ import { UploadService } from '../../shared/services/upload/upload.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  private nameValidators = [Validators.maxLength(12)];
+  private birthDateValidators = [Validators.pattern(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/)];
+
   public showDialog: boolean = false;
   public formGroup: FormGroup = new FormGroup({
-    name: new FormControl(''),
-    birthDate: new FormControl<Date | null>(null)
+    name: new FormControl('', this.nameValidators),
+    birthDate: new FormControl<Date | null>(null, this.birthDateValidators)
   });
+
+  get name() {
+    return this.formGroup.get('name');
+  }
+
+  get birthDate() {
+    return this.formGroup.get('birthDate');
+  }
 
   public profilePictureURL: string | undefined;
 
@@ -27,15 +38,14 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   public ngOnInit(): void {
-    this.showDialog = false;
     const cookieName = this.getCookie('name');
     const cookieBirthDate = this.getCookie('birthDate');
-
     this.profilePictureURL = this.getCookie('profilePictureURL');
 
+    this.showDialog = false;
     this.formGroup = this.formBuilder.group({
-      name: [cookieName],
-      birthDate: [cookieBirthDate ? new Date(cookieBirthDate) : null]
+      name: [cookieName, this.nameValidators],
+      birthDate: [cookieBirthDate, this.birthDateValidators]
     });
   }
 
@@ -43,27 +53,40 @@ export class ProfileComponent implements OnInit {
     this.router.navigate(['/']);
   }
 
-  public onUploadProfilePicture(event: FileUploadHandlerEvent, fileUpload: any) {
+  public onUploadProfilePicture(event: FileUploadHandlerEvent, fileUpload: any): void {
     this.uploadService.uploadProfilePicture(event.files[0]).subscribe(response => {
       this.setCookie('profilePictureURL', response.url);
       this.profilePictureURL = response.url;
-
       fileUpload.clear();
     });
   }
 
   public onSubmit(): void {
-    this.setCookie('name', this.formGroup.value.name);
-    this.setCookie('birthDate', this.formGroup.value.birthDate);
+    this.saveFormCookies();
+    this.navigateWithSuccess();
+  }
+
+  private navigateWithSuccess() {
     this.showDialog = true;
     setTimeout(() => this.navigateToHome(), 2500);
+  }
+
+  private saveFormCookies() {
+    if (this.name!.value === '*del') {
+      this.cookieService.set('profilePictureURL', '');
+      this.cookieService.set('name', '');
+      this.cookieService.set('birthDate', '');
+    } else {
+      this.setCookie('name', this.name!.value);
+      this.setCookie('birthDate', this.birthDate!.value);
+    }
   }
 
   private getCookie(key: string) {
     return this.cookieService.get(key);
   }
 
-  private setCookie(key: string, value: string | null): void {
+  private setCookie(key: string, value: string): void {
     if (value) {
       this.cookieService.set(key, value);
     }
