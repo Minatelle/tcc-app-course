@@ -66,11 +66,15 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  startRecording() {
-    this.voiceRecognition.start();
-  }
-
   abortRecording() {
     this.voiceRecognition.abort();
+  }
+
+  stopRecording() {
+    this.voiceRecognition.stop();
+  }
+
+  startRecording() {
+    this.voiceRecognition.start();
   }
 }

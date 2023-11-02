@@ -54,7 +54,7 @@ export class VoiceRecognitionService {
     this.text = '';
     this.isUserSpeaking = true;
     this.recognition.start();
-    this.recognition.addEventListener('speechend', (condition: any) => {
+    this.recognition.addEventListener('audioend', (condition: any) => {
       if (this.isUserSpeaking) {
         this.stop();
       } else {
