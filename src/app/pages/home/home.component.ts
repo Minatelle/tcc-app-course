@@ -1,7 +1,7 @@
-import { ProfilePicture } from './../../shared/models/profilePicture.interface';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
+import { SpeakingStatus } from 'src/app/shared/enums/speaking-status.enum';
 import { CourseService } from 'src/app/shared/services/course/course.service';
 import { VoiceRecognitionService } from 'src/app/shared/services/voice-recognition/voice-recognition.service';
 
@@ -14,7 +14,6 @@ export class HomeComponent implements OnInit {
   public name: string = '';
   public query: string = '';
   public profilePictureURL: string = '';
-  public isUserSpeaking: boolean = false;
 
   constructor(
     private router: Router,
@@ -22,6 +21,10 @@ export class HomeComponent implements OnInit {
     private courseService: CourseService,
     private voiceRecognition: VoiceRecognitionService
   ) {}
+
+  get isUserSpeaking() {
+    return this.voiceRecognition.isUserSpeaking;
+  }
 
   public ngOnInit(): void {
     const cookieName = this.getCookie('name');
@@ -51,27 +54,27 @@ export class HomeComponent implements OnInit {
   }
 
   initVoiceInput() {
-    // Subscription for initializing and this will call when user stopped speaking.
-    this.voiceRecognition.init().subscribe(() => {
-      // User has stopped recording
-      // Do whatever when mic finished listening
-      this.searchResults();
-    });
-
     // Subscription to detect user input from voice to text.
-    this.voiceRecognition.speechInput().subscribe(input => {
-      // Set voice text output to
-      this.query = input;
+    this.voiceRecognition.speechInput().subscribe(text => {
+      this.query = text;
+    });
+    // Subscription for initializing and this will call when user stopped speaking.
+    this.voiceRecognition.init().subscribe(status => {
+      if (status == SpeakingStatus.Stopped) {
+        this.searchResults();
+      }
     });
   }
 
-  startRecording() {
-    this.isUserSpeaking = true;
-    this.voiceRecognition.start();
+  abortRecording() {
+    this.voiceRecognition.abort();
   }
 
   stopRecording() {
     this.voiceRecognition.stop();
-    this.isUserSpeaking = false;
+  }
+
+  startRecording() {
+    this.voiceRecognition.start();
   }
 }

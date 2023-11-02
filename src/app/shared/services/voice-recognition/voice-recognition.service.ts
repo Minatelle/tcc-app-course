@@ -7,12 +7,12 @@ declare let webkitSpeechRecognition: any;
   providedIn: 'root'
 })
 export class VoiceRecognitionService {
-  recognition: any;
-  isStoppedSpeechRecog = false;
-  public text = '';
+  private recognition: any;
   private voiceToTextSubject: Subject<string> = new Subject();
   private speakingPaused: Subject<any> = new Subject();
   private tempWords: string = '';
+  public text = '';
+  public isUserSpeaking = false;
 
   /**
    * @description Function to return observable so voice sample text can be send to input.
@@ -41,12 +41,9 @@ export class VoiceRecognitionService {
   }
 
   /**
-   * @description Add event listeners to get the updated input and when stoped
+   * @description Add event listeners to get the updated input and when stopped
    */
   initListeners() {
-    this.recognition.addEventListener('end', (condition: any) => {
-      this.recognition.stop();
-    });
     return this.speakingPaused.asObservable();
   }
 
@@ -55,24 +52,27 @@ export class VoiceRecognitionService {
    */
   start() {
     this.text = '';
-    this.isStoppedSpeechRecog = false;
+    this.isUserSpeaking = true;
     this.recognition.start();
-    this.recognition.addEventListener('end', (condition: any) => {
-      if (this.isStoppedSpeechRecog) {
-        this.recognition.isActive = true;
-        this.recognition.stop();
+    this.recognition.addEventListener('audioend', (condition: any) => {
+      if (this.isUserSpeaking) {
+        this.stop();
       } else {
-        this.isStoppedSpeechRecog = false;
         this.wordConcat();
-        // Checked time with last api call made time so we can't have multiple start action within 200ms for countinious listening
-        // Fixed : ERROR DOMException: Failed to execute 'start' on 'SpeechRecognition': recognition has already started.
-        if (!this.recognition.lastActiveTime || Date.now() - this.recognition.lastActive > 200) {
-          this.recognition.start();
-          this.recognition.lastActive = Date.now();
-        }
       }
       this.voiceToTextSubject.next(this.text);
     });
+  }
+
+  /**
+   * @description Function to abort recognition.
+   */
+  abort() {
+    this.text = '';
+    this.tempWords = '';
+    this.isUserSpeaking = false;
+    this.recognition.abort();
+    this.speakingPaused.next('Aborted speaking');
   }
 
   /**
@@ -80,10 +80,9 @@ export class VoiceRecognitionService {
    */
   stop() {
     this.text = '';
-    this.isStoppedSpeechRecog = true;
+    this.isUserSpeaking = false;
     this.wordConcat();
     this.recognition.stop();
-    this.recognition.isActive = false;
     this.speakingPaused.next('Stopped speaking');
   }
 
