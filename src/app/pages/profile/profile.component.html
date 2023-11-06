@@ -59,7 +59,13 @@
 
       <div class="flex flex-column w-full">
         <label class="flex-1 p-2 font-bold text-2xl" htmlFor="birthDate">Data de nascimento</label>
-        <p-inputMask class="inputMask" formControlName="birthDate" mask="99/99/9999" placeholder="Insira sua data aqui"></p-inputMask>
+        <p-inputMask
+          class="inputMask"
+          formControlName="birthDate"
+          mask="99/99/9999"
+          placeholder="Insira sua data aqui"
+          type="tel"
+        ></p-inputMask>
         <div
           [ngStyle]="{ visibility: birthDate!.invalid && (birthDate!.dirty || birthDate!.touched) ? 'visible' : 'hidden' }"
           class="alert alert-danger"
