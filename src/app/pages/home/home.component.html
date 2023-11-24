@@ -26,21 +26,20 @@
   <hr />
 
   <main class="pt-8">
-    <div class="pt-8">
-      <div class="pt-8">
-        <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
-          <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
-          <input
-            class="pl-6 w-full h-3rem border-solid border-2 border-black"
-            placeholder="O que deseja aprender?"
-            type="search"
-            pInputText
-            name="query"
-            [(ngModel)]="query"
-            (keydown.enter)="searchResults()"
-          />
-        </span>
-      </div>
+    <div class="pt-4">
+      <img class="mb-3 mx-auto w-18rem h-auto" src="assets/png/logo.png" alt="" />
+      <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
+        <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
+        <input
+          class="pl-6 w-full h-3rem border-solid border-2 border-black"
+          placeholder="O que deseja aprender?"
+          type="search"
+          pInputText
+          name="query"
+          [(ngModel)]="query"
+          (keydown.enter)="searchResults()"
+        />
+      </span>
 
       <div class="flex gap-5" *ngIf="!isUserSpeaking; else voiceStopButton">
         <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="searchResults()">
