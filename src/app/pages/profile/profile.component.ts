@@ -55,8 +55,8 @@ export class ProfileComponent implements OnInit {
 
   public onUploadProfilePicture(event: FileUploadHandlerEvent, fileUpload: any): void {
     this.uploadService.uploadProfilePicture(event.files[0]).subscribe(response => {
-      this.setCookie('profilePictureURL', response.url);
-      this.profilePictureURL = response.url;
+      this.setCookie('profilePictureURL', response.secure_url);
+      this.profilePictureURL = response.secure_url;
       fileUpload.clear();
     });
   }
