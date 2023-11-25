@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   private birthDateValidators = [Validators.pattern(/^(0[1-9]|[12]\d|3[01])\/(0[1-9]|1[0-2])\/\d{4}$/)];
 
   public showDialog: boolean = false;
+  public showUploadLoading: boolean = false;
   public formGroup: FormGroup = new FormGroup({
     name: new FormControl('', this.nameValidators),
     birthDate: new FormControl<Date | null>(null, this.birthDateValidators)
@@ -54,10 +55,12 @@ export class ProfileComponent implements OnInit {
   }
 
   public onUploadProfilePicture(event: FileUploadHandlerEvent, fileUpload: any): void {
+    this.showUploadLoading = true;
     this.uploadService.uploadProfilePicture(event.files[0]).subscribe(response => {
       this.setCookie('profilePictureURL', response.secure_url);
       this.profilePictureURL = response.secure_url;
       fileUpload.clear();
+      this.showUploadLoading = false;
     });
   }
 

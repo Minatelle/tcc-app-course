@@ -19,52 +19,50 @@
         <p class="mt-2 w-max font-bold text-2xl">Olá, {{ name }}</p>
       </div>
       <ng-template #welcomeMessage>
-        <p class="mt-2 w-max font-bold text-2xl">Olá, seja bem vindo</p>
+        <p class="mt-2 w-max font-bold text-2xl">Olá, bem vindo</p>
       </ng-template>
     </div>
   </header>
   <hr />
 
   <main class="pt-8">
-    <div class="pt-4">
-      <img class="mb-3 mx-auto w-18rem h-auto" src="assets/png/logo.png" alt="Logo da Plataforma" />
-      <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
-        <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
-        <input
-          class="pl-6 w-full h-3rem border-solid border-2 border-black"
-          placeholder="O que deseja aprender?"
-          type="search"
-          pInputText
-          name="query"
-          [(ngModel)]="query"
-          (keydown.enter)="searchResults()"
-        />
-      </span>
+    <img class="mb-3 mx-auto w-18rem h-auto" src="assets/png/logo.png" alt="Logo da Plataforma" />
+    <span class="flex align-itens-center mb-5 w-full p-input-icon-left">
+      <i class="-ml-1 -mt-3 text-primary text-5xl material-icons">search</i>
+      <input
+        class="pl-6 w-full h-3rem border-solid border-2 border-black"
+        placeholder="O que deseja aprender?"
+        type="search"
+        pInputText
+        name="query"
+        [(ngModel)]="query"
+        (keydown.enter)="searchResults()"
+      />
+    </span>
 
-      <div class="flex gap-5" *ngIf="!isUserSpeaking; else voiceStopButton">
-        <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="searchResults()">
-          <p class="w-full font-bold text-center">Pesquisar</p>
+    <div class="flex gap-5" *ngIf="!isUserSpeaking; else voiceStopButton">
+      <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="searchResults()">
+        <p class="w-full font-bold text-center">Pesquisar</p>
+      </button>
+
+      <button class="flex-1 p-0 h-3rem" pButton pRipple (touchstart)="startRecording()">
+        <i class="pl-1 text-5xl material-icons">mic</i>
+        <p class="pr-5 w-full font-bold text-center">Voz</p>
+      </button>
+    </div>
+
+    <ng-template #voiceStopButton>
+      <div class="flex flex-column align-items-center">
+        <button class="p-0 w-8rem h-8rem border-3 border-circle bg-primary-reverse" pButton pRipple (click)="stopRecording()">
+          <img class="listening-gif p-4 w-full text-center" src="/assets/gif/listening.gif" alt="animação de ouvindo" />
         </button>
 
-        <button class="flex-1 p-0 h-3rem" pButton pRipple (click)="startRecording()">
-          <i class="pl-1 text-5xl material-icons">mic</i>
-          <p class="pr-5 w-full font-bold text-center">Voz</p>
+        <p class="pt-2 pb-5 w-full font-bold text-2xl text-center">Ouvindo...</p>
+
+        <button class="p-0 w-10rem h-4rem border-3 border-round bg-primary" pButton pRipple (click)="abortRecording()">
+          <p class="w-full font-bold text-center">Cancelar</p>
         </button>
       </div>
-
-      <ng-template #voiceStopButton>
-        <div class="flex flex-column align-items-center">
-          <button class="p-0 w-8rem h-8rem border-3 border-circle bg-primary-reverse" pButton pRipple (click)="stopRecording()">
-            <img class="listening-gif p-4 w-full text-center" src="/assets/gif/listening.gif" alt="animação de ouvindo" />
-          </button>
-
-          <p class="py-5 w-full font-bold text-2xl text-center">Ouvindo...</p>
-
-          <button class="p-0 w-10rem h-4rem border-3 border-round bg-primary" pButton pRipple (click)="abortRecording()">
-            <p class="w-full font-bold text-center">Cancelar</p>
-          </button>
-        </div>
-      </ng-template>
-    </div>
+    </ng-template>
   </main>
 </section>

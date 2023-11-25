@@ -15,8 +15,16 @@
   <main>
     <div *ngIf="profilePictureURL; else avatarIcon">
       <img
+        *ngIf="!showUploadLoading"
         class="mb-5 mx-auto border-circle border-2 border-black w-7rem h-7rem"
         src="{{ profilePictureURL }}"
+        style="object-fit: cover"
+        alt=""
+      />
+      <img
+        *ngIf="showUploadLoading"
+        class="mb-5 mx-auto border-circle border-2 border-black w-7rem h-7rem"
+        src="/assets/gif/loading.gif"
         style="object-fit: cover"
         alt=""
       />
