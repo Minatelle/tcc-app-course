@@ -15,7 +15,7 @@ export class CourseService {
   private lastId: string | undefined;
 
   constructor(private http: HttpClient, private router: Router) {
-    this.baseUrl = 'https://tcc-srv-course-supply.onrender.com/course-supply/';
+    this.baseUrl = 'https://f100-2804-14c-478-2e1-2080-2641-b628-9931.ngrok-free.app/course-supply/';
   }
 
   public getCourses(query: string): Observable<Course[]> {
