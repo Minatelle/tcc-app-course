@@ -13,7 +13,7 @@
     <h1 class="mr-6 w-full text-center">Perfil</h1>
   </header>
   <main>
-    <div *ngIf="profilePictureURL; else avatarIcon">
+    <div *ngIf="profilePictureURL || showUploadLoading; else avatarIcon">
       <img
         *ngIf="!showUploadLoading"
         class="mb-5 mx-auto border-circle border-2 border-black w-7rem h-7rem"
